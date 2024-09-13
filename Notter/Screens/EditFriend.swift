@@ -19,6 +19,7 @@ struct EditFriend: View {
     
     @Namespace var top
     @Namespace var info
+    @Namespace var mbtiInput
     
     @Environment(\.modelContext) private var modelContext
     
@@ -57,7 +58,7 @@ struct EditFriend: View {
     @ViewBuilder
     var body: some View {
         
-            
+        ScrollViewReader{ proxy in
             ScrollView(.vertical){
                 
                 VStack(spacing: 16){
@@ -69,9 +70,9 @@ struct EditFriend: View {
                     
                     avatarSection
                     colorToneSection
-                    personalInfoSection
+                    personalInfoSection.id(info)
                     
-                    mbtiSection
+                    mbtiSection.id(mbtiInput)
                     
                     
                     Button(action: {
@@ -79,12 +80,31 @@ struct EditFriend: View {
                     }, label: {
                         Text("Finish").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(Color("\(selectedColorTone)-secondary")).padding().background(Color("\(selectedColorTone)-tertiary")).clipShape(RoundedRectangle(cornerSize: CGSize(width: 16, height: 16)))
                     })
-
+                    
+                    if(focusedField != nil){
+                        Rectangle().fill(.clear).frame(width: 100, height: 0)
+                    }
+                    
                 }
                 .padding()
+                .onChange(of: focusedField){old, new in
+                    if (new == FocusedField.name){
+                        withAnimation{
+                            proxy.scrollTo(info)
+                        }
+                    }else if (new == FocusedField.mbti){
+                        withAnimation{
+                            proxy.scrollTo(mbtiInput, anchor: .top)
+                        }
+                    }
+                }
+            }
+            .onTapGesture {
+                focusedField = nil
             }
             .scrollIndicators(.hidden)
-            .toolbar(.hidden)
+        }
+        .toolbar(.hidden)
         
     }
     
@@ -247,27 +267,27 @@ struct EditFriend: View {
     }
     
     var colorToneSection: some View {
-            VStack(alignment: .leading, spacing: 15) {
-                Text("Color Tone")
-                    .font(.headline)
-                
-                HStack(spacing: 15) {
-                    ForEach(colorTones, id: \.self) { tone in
-                        ColorToneButton(tone: tone, isSelected: selectedColorTone == tone) {
-                            selectedColorTone = tone
-                            gradient = LinearGradient(gradient: Gradient(colors: [Color(selectedColorTone), Color("\(selectedColorTone)-secondary")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        }
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Color Tone")
+                .font(.headline)
+            
+            HStack(spacing: 15) {
+                ForEach(colorTones, id: \.self) { tone in
+                    ColorToneButton(tone: tone, isSelected: selectedColorTone == tone) {
+                        selectedColorTone = tone
+                        gradient = LinearGradient(gradient: Gradient(colors: [Color(selectedColorTone), Color("\(selectedColorTone)-secondary")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     }
                 }
             }
-            .foregroundStyle(Color("\(selectedColorTone)-secondary"))
-            .padding()
-            .background(Color("\(selectedColorTone)-tertiary").opacity(0.3))
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .onChange(of: selectedColorTone){ old, new in
-                friend.color = new
-            }
         }
+        .foregroundStyle(Color("\(selectedColorTone)-secondary"))
+        .padding()
+        .background(Color("\(selectedColorTone)-tertiary").opacity(0.3))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .onChange(of: selectedColorTone){ old, new in
+            friend.color = new
+        }
+    }
 }
 
 #Preview {

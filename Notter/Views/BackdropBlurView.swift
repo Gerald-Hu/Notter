@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BackdropBlurView: UIViewRepresentable {
     
-    var style: UIBlurEffect.Style = .systemMaterial
+    var style: UIBlurEffect.Style = .systemMaterialLight
     
     func makeUIView(context: Context) -> some UIView {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: style))

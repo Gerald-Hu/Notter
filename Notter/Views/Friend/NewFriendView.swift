@@ -12,6 +12,7 @@ struct NewFriendView: View {
     
     @Namespace var top
     @Namespace var info
+    @Namespace var mbtiInput
     
     @Binding var offset: CGFloat
     
@@ -53,9 +54,9 @@ struct NewFriendView: View {
                         Text("").frame(height: 1).id(top)
                         avatarSection
                         colorToneSection
-                        personalInfoSection
+                        personalInfoSection.id(info)
                         
-                        mbtiSection
+                        mbtiSection.id(mbtiInput)
                         
                         
                         Button(action: {
@@ -67,7 +68,7 @@ struct NewFriendView: View {
                             
                             addFriend(newFriend)
                             withAnimation{
-                                proxy.scrollTo(top)
+                                proxy.scrollTo(info)
                                 offset = UIScreen.height * 0.9
                             }
                             
@@ -83,9 +84,27 @@ struct NewFriendView: View {
                         
                         HStack{Spacer()}
                         
-                        Rectangle().fill(.clear).frame(height: 140)
+                        if(focusedField != nil){
+                            Rectangle().fill(.clear).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 300)
+                        }
+                        
                     }
                     .padding()
+                    .padding(.bottom, 200)
+                }
+                .onTapGesture {
+                    focusedField = nil
+                }
+                .onChange(of: focusedField){old, new in
+                    if (new == FocusedField.name){
+                        withAnimation{
+                            proxy.scrollTo(info, anchor: .center)
+                        }
+                    }else if (new == FocusedField.mbti){
+                        withAnimation{
+                            proxy.scrollTo(mbtiInput, anchor: .top)
+                        }
+                    }
                 }
                 .scrollIndicators(.hidden)
             }

@@ -27,6 +27,7 @@ struct DrawerView: View {
             if offset < UIScreen.height * 0.5 {
                 Color.secondary.opacity((0.7 - offset / maxOffset)).ignoresSafeArea()
                     .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
                         withAnimation{
                             offset = maxOffset
                         }

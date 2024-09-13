@@ -33,6 +33,7 @@ struct Home: View {
                                 
                                 Text("Add Some")
                                     .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
+                                    
                                 
                                 Text("Friends!")
                                     .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
