@@ -112,7 +112,7 @@ struct Notes: View {
         .onAppear{
             self.clusterings = updateClusterings()
         }
-        .background(Color(friend.color))
+        .background(Color(friend.color).ignoresSafeArea())
         .toolbar(.hidden)
     }
     
