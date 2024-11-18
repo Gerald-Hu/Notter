@@ -67,6 +67,9 @@ struct NewFriendView: View {
                             }
                             
                             addFriend(newFriend)
+                            
+                            focusedField = nil
+                            
                             withAnimation{
                                 proxy.scrollTo(info)
                                 offset = UIScreen.height * 0.9

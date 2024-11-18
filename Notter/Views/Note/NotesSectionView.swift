@@ -37,7 +37,7 @@ struct NotesSectionView: View {
                 ))
                 
                 
-                if(expanded){
+                if(expanded || notes.count == 1){
                     NotesExpandedView(notes: notes)
                         .padding(.horizontal, 12)
                 }else{

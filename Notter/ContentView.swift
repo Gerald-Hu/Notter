@@ -12,7 +12,6 @@ struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
     
-    @State var friendStore: FriendStore = FriendStore()
     
     var body: some View {
         
@@ -24,18 +23,9 @@ struct ContentView: View {
                     
                     Home(safeArea: safeArea)
                         .ignoresSafeArea()
+                    
                 }
             }
-        }
-        .environment(friendStore)
-        .onAppear{
-            
-            Task{
-                let friendPredicate = #Predicate<Friend>{friend in true}
-                let friends = try modelContext.fetch(FetchDescriptor<Friend>(predicate: friendPredicate))
-                friendStore.updateFriends(with: friends)
-            }
-            
         }
         
     }

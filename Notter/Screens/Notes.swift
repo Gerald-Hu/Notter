@@ -39,7 +39,7 @@ struct Notes: View {
         _notes = Query(filter: #Predicate {
             $0.ofWhom == owner
         })
-    
+        noteEditVM.updateClustering = self.doUpdateClustering
     }
     
     var body: some View {
@@ -121,10 +121,15 @@ struct Notes: View {
             
             HStack{
                 
-                AvatarView(avatar: friend.avatar, avatarImage: friend.avatarImage, viewable: true)
+                AvatarView(avatar: friend.avatar, avatarImage: friend.avatarImage, viewable: false, scale: friend.avatarScale ?? 1.0, offset: CGSize(width: friend.avatarOffsetX ?? .zero, height: friend.avatarOffsetY ?? .zero), color: friend.color)
                     .scaleEffect(x: 1 - (0.75 * progress), y: 1 - (0.75 * progress), anchor: .bottomLeading)
                     .padding(.leading, 8 * progress)
                     .offset(y: 8 * progress)
+                    .onTapGesture {
+                        modal.openModal(with: AnyView(
+                            EditAvatarView(friend: friend, finishEdit: {modal.closeModal()})
+                        ))
+                    }
                 
                 Spacer()
                 
@@ -343,8 +348,10 @@ struct Notes: View {
     func deleteNote(note: Note){
         Task{
             modelContext.delete(note)
+            self.doUpdateClustering()
         }
         newNoteContent = ""
+        
     }
     
     func updateClusterings() -> [String]{
@@ -367,6 +374,11 @@ struct Notes: View {
         tempClusterings = tempClusterings.sorted(by: {$0 > $1})
         
         return tempClusterings
+    }
+    
+    func doUpdateClustering(){
+        self.clusterings = updateClusterings();
+        
     }
     
     func editFriend(friend: Friend){
@@ -398,12 +410,16 @@ class NoteEditVM {
     var isEditing: Bool = false
     var newNoteContent = ""
     
+    var updateClustering = {}
+    
     func changeNoteToEdit(note: Note){
         noteToEdit = note
         isEditing = true
         newNoteContent = note.content
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
+
+    
 }
 
 struct ScrollOffsetPreferenceKey: PreferenceKey {

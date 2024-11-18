@@ -57,6 +57,9 @@ struct NoteView: View {
     func deleteNote(){
         modal.closeModal()
         modelContext.delete(note)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            noteEditVM.updateClustering()
+        }
     }
 }
 

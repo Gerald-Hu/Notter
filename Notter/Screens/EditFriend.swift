@@ -185,6 +185,9 @@ struct EditFriend: View {
                                 await MainActor.run {
                                     friend.avatar = "custom"
                                     friend.avatarImage = selectedImageData
+                                    friend.avatarOffsetX = .zero
+                                    friend.avatarOffsetY = .zero
+                                    friend.avatarScale = 1.0
                                 }
                                 
                                 showingAvatarPicker = false

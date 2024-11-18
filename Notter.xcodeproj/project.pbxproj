@@ -26,7 +26,6 @@
 		7425A2592C69339E004E9D55 /* JacquesFrancoisShadow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7425A2582C69339E004E9D55 /* JacquesFrancoisShadow-Regular.ttf */; };
 		7425A25B2C6933A6004E9D55 /* JacquesFrancois-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7425A25A2C6933A6004E9D55 /* JacquesFrancois-Regular.ttf */; };
 		7425A25E2C696F9D004E9D55 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A25D2C696F9D004E9D55 /* Modal.swift */; };
-		7425A2622C69B8ED004E9D55 /* FriendStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2612C69B8ED004E9D55 /* FriendStore.swift */; };
 		7425A2662C69E236004E9D55 /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2652C69E236004E9D55 /* ConditionalModifier.swift */; };
 		7425A2682C69E800004E9D55 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2672C69E800004E9D55 /* DrawerView.swift */; };
 		7425A26A2C6A94AC004E9D55 /* FabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2692C6A94AC004E9D55 /* FabView.swift */; };
@@ -44,6 +43,7 @@
 		7425A2872C6C4C78004E9D55 /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2862C6C4C78004E9D55 /* Zodiac.swift */; };
 		7425A2892C6C5895004E9D55 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2882C6C5895004E9D55 /* AvatarView.swift */; };
 		7425A28B2C6ED927004E9D55 /* SortToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A28A2C6ED927004E9D55 /* SortToggleView.swift */; };
+		7478FAF32CEA8DAB00FDAD7C /* EditAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,6 @@
 		7425A25A2C6933A6004E9D55 /* JacquesFrancois-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JacquesFrancois-Regular.ttf"; sourceTree = "<group>"; };
 		7425A25C2C6933B6004E9D55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7425A25D2C696F9D004E9D55 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
-		7425A2612C69B8ED004E9D55 /* FriendStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendStore.swift; sourceTree = "<group>"; };
 		7425A2652C69E236004E9D55 /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
 		7425A2672C69E800004E9D55 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		7425A2692C6A94AC004E9D55 /* FabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabView.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		7425A2862C6C4C78004E9D55 /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		7425A2882C6C5895004E9D55 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		7425A28A2C6ED927004E9D55 /* SortToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortToggleView.swift; sourceTree = "<group>"; };
+		7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,6 @@
 				7425A25C2C6933B6004E9D55 /* Info.plist */,
 				7425A2382C68860F004E9D55 /* Utils */,
 				7425A23C2C68874F004E9D55 /* SwiftDataModels */,
-				7425A2602C69B79D004E9D55 /* Stores */,
 				7425A2552C693365004E9D55 /* Fonts */,
 				7425A24D2C688E69004E9D55 /* Extensions */,
 				7425A24A2C688D21004E9D55 /* Views */,
@@ -216,14 +215,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		7425A2602C69B79D004E9D55 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				7425A2612C69B8ED004E9D55 /* FriendStore.swift */,
-			);
-			path = Stores;
-			sourceTree = "<group>";
-		};
 		7425A26B2C6AA252004E9D55 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +243,7 @@
 			children = (
 				7425A27E2C6B2F03004E9D55 /* NewFriendView.swift */,
 				7425A2822C6C3791004E9D55 /* FriendActionsView.swift */,
+				7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -343,7 +335,6 @@
 				7425A23E2C688783004E9D55 /* Friend.swift in Sources */,
 				7425A2422C688944004E9D55 /* Date.swift in Sources */,
 				7425A2492C688A1F004E9D55 /* EditFriend.swift in Sources */,
-				7425A2622C69B8ED004E9D55 /* FriendStore.swift in Sources */,
 				7425A2472C6889F2004E9D55 /* Notes.swift in Sources */,
 				7425A24C2C688DAE004E9D55 /* HomeListView.swift in Sources */,
 				7425A2542C6897FA004E9D55 /* Navigation.swift in Sources */,
@@ -351,6 +342,7 @@
 				7425A2892C6C5895004E9D55 /* AvatarView.swift in Sources */,
 				7425A28B2C6ED927004E9D55 /* SortToggleView.swift in Sources */,
 				7425A2732C6AB85A004E9D55 /* NoteView.swift in Sources */,
+				7478FAF32CEA8DAB00FDAD7C /* EditAvatarView.swift in Sources */,
 				7425A26D2C6AB0F8004E9D55 /* NotesSectionView.swift in Sources */,
 				7425A2292C688562004E9D55 /* NotterApp.swift in Sources */,
 				7425A2752C6B05B0004E9D55 /* AddOrEditNoteView.swift in Sources */,

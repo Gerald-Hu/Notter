@@ -25,6 +25,9 @@ struct FriendActionsView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
+                        .scaleEffect(friend.avatarScale ?? 1.0)
+                        .offset(CGSize(width: friend.avatarOffsetX ?? .zero, height: friend.avatarOffsetY ?? .zero))
+                        .contentShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         .frame(width: 120, height: 120)
 
@@ -34,7 +37,6 @@ struct FriendActionsView: View {
                         .scaledToFit()
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         .frame(width: 120, height: 120)
-
                 }
                 
                 Spacer()

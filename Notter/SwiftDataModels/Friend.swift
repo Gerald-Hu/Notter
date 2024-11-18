@@ -21,6 +21,11 @@ class Friend {
     // Use to support clustering - #Predicate Macro does not support functions
     var firstChar: String
     
+    // For Custom Avatar
+    var avatarScale: CGFloat? = 1.0
+    var avatarOffsetX: CGFloat? = 0.0
+    var avatarOffsetY: CGFloat? = 0.0
+    
     @Attribute(.externalStorage)
     var avatarImage: Data?
     

@@ -24,7 +24,7 @@ struct NameCardView: View {
                 Spacer()
                 VStack(spacing: 24) {
                     
-                    AvatarView(avatar: friend.avatar, avatarImage: friend.avatarImage)
+                    AvatarView(avatar: friend.avatar, avatarImage: friend.avatarImage, scale: friend.avatarScale ?? 1.0, offset: CGSize(width: friend.avatarOffsetX ?? .zero, height: friend.avatarOffsetY ?? .zero), color: friend.color)
                     
                     Text(friend.name)
                         .foregroundStyle(.white)
@@ -52,6 +52,8 @@ struct NameCardView: View {
             modal.openModal(with: AnyView(
                 FriendActionsView(friend: friend, editFriend: editFriend(friend:), deleteFriend: deleteFriend(friend: ))
             ))
+            
+            
         }
     }
     

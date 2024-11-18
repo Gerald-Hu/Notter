@@ -71,16 +71,19 @@ struct Home: View {
                                         .padding(.vertical,4)
                                         .frame(width: 68)
                                         .if(currentClustering == clustering){
-                                            $0.background(RoundedRectangle(cornerRadius: 999).fill(.bgPrimary).stroke(.black, style: StrokeStyle(lineWidth: 2)))
+                                            $0.background(
+                                                ZStack {
+                                                    Capsule().fill(.black)
+                                                    Capsule().fill(.bgPrimary).padding(.horizontal, 2).padding(.vertical, 2)
+                                                }
+                                            )
                                         }
                                         .if(currentClustering != clustering){
                                             $0.background(Capsule().fill(.bgPrimary).stroke(.black, style: StrokeStyle(lineWidth: 1, dash: [2])))
                                         }
                                         .onTapGesture {
                                             currentClustering = clustering
-                                            if(clustering == "All"){
-
-                                            }
+                                            
                                         }
                                 }
                             }
