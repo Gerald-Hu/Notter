@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BryndanWriteBook-nGPM.ttf</string>
 		<string>JacquesFrancois-Regular.ttf</string>
 		<string>JacquesFrancoisShadow-Regular.ttf</string>
 		<string>Kavoon-Regular.ttf</string>

@@ -81,7 +81,7 @@ struct FriendActionsView: View {
                     .scaledToFit()
                     .padding()
                     .frame(width: 68, height: 68)
-                    .background(.gray.opacity(0.15))
+                    .background(Color("\(friend.color)-tertiary"))
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .onTapGesture {
                         editFriend(friend)
@@ -93,7 +93,7 @@ struct FriendActionsView: View {
                     .scaledToFit()
                     .padding()
                     .frame(width: 68, height: 68)
-                    .background(.gray.opacity(0.15))
+                    .background(Color("\(friend.color)-tertiary"))
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .onTapGesture {
                         deleteFriend(friend)
@@ -106,7 +106,7 @@ struct FriendActionsView: View {
             Spacer()
         }
         .padding()
-        .shadow(radius: 10)
+        .shadow(radius: 4, x: 2, y: 2)
     }
     
 }

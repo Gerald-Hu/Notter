@@ -12,21 +12,23 @@ struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
     
+    @Query private var appConfig: [AppConfig]
     
     var body: some View {
         
         ModalView{
             RouterView{
-                
-                GeometryReader {
-                    let safeArea = $0.safeAreaInsets
-                    
-                    Home(safeArea: safeArea)
-                        .ignoresSafeArea()
-                    
-                }
+                Home()
             }
         }
+        .onAppear{
+            if (appConfig.isEmpty) {
+                let newAppConfig = AppConfig()
+                modelContext.insert(newAppConfig)
+            }
+            
+        }
+        
         
     }
     
@@ -34,5 +36,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().modelContainer(for: [Friend.self, Note.self], inMemory: true)
+    ContentView().modelContainer(for: [Friend.self, Note.self, AppConfig.self], inMemory: true)
 }

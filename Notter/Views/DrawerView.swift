@@ -11,7 +11,7 @@ import SwiftData
 struct DrawerView: View {
     
     private let maxOffset = UIScreen.height * 0.9
-    private let minOffset = UIScreen.height * 0.1
+    private let minOffset = UIScreen.height * 0.12
     
     @State private var offset: CGFloat = UIScreen.height * 0.9
     @State private var startOffset: CGFloat = -1

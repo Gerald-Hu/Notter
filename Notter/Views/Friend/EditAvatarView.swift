@@ -201,7 +201,6 @@ struct EditAvatarView: View {
                     Spacer()
                     
                 }
-                .padding(.horizontal, 28)
                 .padding(20)
             }
         }

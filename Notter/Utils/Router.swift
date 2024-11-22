@@ -9,14 +9,17 @@ import SwiftUI
 
 @Observable
 class Router {
-    // Contains the possible destinations in our Router
+    
+    // All possible routes
     enum Route: Hashable {
         case Home
         case Notes(Friend)
         case EditFriend(Friend)
+        case Onboarding
+        case Menu
     }
     
-    // Used to programatically control our navigation stack
+    // Used to programatically control navigation stack
     var path: NavigationPath = NavigationPath()
     
     // Builds the views
@@ -28,22 +31,29 @@ class Router {
             EditFriend(friend: friend)
         case .Notes(let friend):
             Notes(friend: friend)
+        case .Onboarding:
+            Onboarding()
+        case .Menu:
+            MenuView()
         }
     }
     
-    // Used by views to navigate to another view
+    func replace(_ appRoute: Route){
+        
+        path.append(appRoute)
+        path.removeLast(1)
+    }
+    
     func navigateTo(_ appRoute: Route) {
         path.append(appRoute)
     }
     
-    // Used to go back to the previous screen
     func navigateBack() {
         if (path.count > 0) {
             path.removeLast()
         }
     }
     
-    // Pop to the root screen in our hierarchy
     func popToRoot() {
         path.removeLast(path.count)
     }

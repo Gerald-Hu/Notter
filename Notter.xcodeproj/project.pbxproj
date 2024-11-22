@@ -43,6 +43,11 @@
 		7425A2872C6C4C78004E9D55 /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2862C6C4C78004E9D55 /* Zodiac.swift */; };
 		7425A2892C6C5895004E9D55 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A2882C6C5895004E9D55 /* AvatarView.swift */; };
 		7425A28B2C6ED927004E9D55 /* SortToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425A28A2C6ED927004E9D55 /* SortToggleView.swift */; };
+		7442A47B2CEC6DAE0009218F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442A47A2CEC6DAE0009218F /* Onboarding.swift */; };
+		7442A47D2CEC6ED80009218F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442A47C2CEC6ED80009218F /* AppConfig.swift */; };
+		7442A4862CEEFCE70009218F /* BryndanWriteBook-nGPM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7442A4852CEEFCE70009218F /* BryndanWriteBook-nGPM.ttf */; };
+		7442A4892CEF1B3B0009218F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442A4882CEF1B3B0009218F /* MenuView.swift */; };
+		7442A48B2CEF20E20009218F /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442A48A2CEF20E20009218F /* MenuButtonView.swift */; };
 		7478FAF32CEA8DAB00FDAD7C /* EditAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +90,11 @@
 		7425A2862C6C4C78004E9D55 /* Zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		7425A2882C6C5895004E9D55 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		7425A28A2C6ED927004E9D55 /* SortToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortToggleView.swift; sourceTree = "<group>"; };
+		7442A47A2CEC6DAE0009218F /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		7442A47C2CEC6ED80009218F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		7442A4852CEEFCE70009218F /* BryndanWriteBook-nGPM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BryndanWriteBook-nGPM.ttf"; sourceTree = "<group>"; };
+		7442A4882CEF1B3B0009218F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		7442A48A2CEF20E20009218F /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +167,7 @@
 			children = (
 				7425A23D2C688783004E9D55 /* Friend.swift */,
 				7425A23F2C688879004E9D55 /* Note.swift */,
+				7442A47C2CEC6ED80009218F /* AppConfig.swift */,
 			);
 			path = SwiftDataModels;
 			sourceTree = "<group>";
@@ -164,9 +175,11 @@
 		7425A2432C6889D5004E9D55 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				7442A4882CEF1B3B0009218F /* MenuView.swift */,
 				7425A2442C6889E1004E9D55 /* Home.swift */,
 				7425A2462C6889F2004E9D55 /* Notes.swift */,
 				7425A2482C688A1F004E9D55 /* EditFriend.swift */,
+				7442A47A2CEC6DAE0009218F /* Onboarding.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -174,6 +187,8 @@
 		7425A24A2C688D21004E9D55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7442A4872CEF1B2D0009218F /* Menu */,
+				7478FAF42CEC4ED800FDAD7C /* Tour */,
 				7425A27D2C6B2BF0004E9D55 /* Friend */,
 				7425A2782C6B0E54004E9D55 /* Photo */,
 				7425A26B2C6AA252004E9D55 /* Note */,
@@ -201,6 +216,7 @@
 			children = (
 				7425A24B2C688DAE004E9D55 /* HomeListView.swift */,
 				7425A2512C6890F2004E9D55 /* NameCardView.swift */,
+				7442A48A2CEF20E20009218F /* MenuButtonView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -208,6 +224,7 @@
 		7425A2552C693365004E9D55 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7442A4852CEEFCE70009218F /* BryndanWriteBook-nGPM.ttf */,
 				7425A25A2C6933A6004E9D55 /* JacquesFrancois-Regular.ttf */,
 				7425A2582C69339E004E9D55 /* JacquesFrancoisShadow-Regular.ttf */,
 				7425A2562C69338E004E9D55 /* Kavoon-Regular.ttf */,
@@ -246,6 +263,20 @@
 				7478FAF22CEA8DAB00FDAD7C /* EditAvatarView.swift */,
 			);
 			path = Friend;
+			sourceTree = "<group>";
+		};
+		7442A4872CEF1B2D0009218F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		7478FAF42CEC4ED800FDAD7C /* Tour */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tour;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +339,7 @@
 			files = (
 				7425A2322C688563004E9D55 /* Preview Assets.xcassets in Resources */,
 				7425A25B2C6933A6004E9D55 /* JacquesFrancois-Regular.ttf in Resources */,
+				7442A4862CEEFCE70009218F /* BryndanWriteBook-nGPM.ttf in Resources */,
 				7425A2592C69339E004E9D55 /* JacquesFrancoisShadow-Regular.ttf in Resources */,
 				7425A2572C69338E004E9D55 /* Kavoon-Regular.ttf in Resources */,
 				7425A22F2C688563004E9D55 /* Assets.xcassets in Resources */,
@@ -321,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7442A4892CEF1B3B0009218F /* MenuView.swift in Sources */,
 				7425A2712C6AB117004E9D55 /* NotesCollapsedView.swift in Sources */,
 				7425A26F2C6AB10C004E9D55 /* NotesExpandedView.swift in Sources */,
 				7425A23B2C6886B1004E9D55 /* Router.swift in Sources */,
@@ -342,11 +375,14 @@
 				7425A2892C6C5895004E9D55 /* AvatarView.swift in Sources */,
 				7425A28B2C6ED927004E9D55 /* SortToggleView.swift in Sources */,
 				7425A2732C6AB85A004E9D55 /* NoteView.swift in Sources */,
+				7442A47B2CEC6DAE0009218F /* Onboarding.swift in Sources */,
 				7478FAF32CEA8DAB00FDAD7C /* EditAvatarView.swift in Sources */,
 				7425A26D2C6AB0F8004E9D55 /* NotesSectionView.swift in Sources */,
 				7425A2292C688562004E9D55 /* NotterApp.swift in Sources */,
 				7425A2752C6B05B0004E9D55 /* AddOrEditNoteView.swift in Sources */,
+				7442A48B2CEF20E20009218F /* MenuButtonView.swift in Sources */,
 				7425A2452C6889E1004E9D55 /* Home.swift in Sources */,
+				7442A47D2CEC6ED80009218F /* AppConfig.swift in Sources */,
 				7425A27C2C6B2BA5004E9D55 /* BackdropBlurView.swift in Sources */,
 				7425A2812C6C007C004E9D55 /* PhotoView.swift in Sources */,
 				7425A2402C688879004E9D55 /* Note.swift in Sources */,
@@ -501,7 +537,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.o-logn.Notter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -537,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.o-logn.Notter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

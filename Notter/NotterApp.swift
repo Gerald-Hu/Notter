@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct NotterApp: App {
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([Friend.self, Note.self])
+        let schema = Schema([Friend.self, Note.self, AppConfig.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {

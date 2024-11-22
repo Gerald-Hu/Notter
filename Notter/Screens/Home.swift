@@ -12,9 +12,10 @@ struct Home: View {
     
     @Environment(Router.self) var router
     @Environment(\.modelContext) private var modelContext
-    @Query var friends: [Friend]
+    @Environment(Modal<AnyView>.self) var modal
     
-    var safeArea: EdgeInsets = EdgeInsets()
+    @Query var friends: [Friend]
+    @Query private var appConfig: [AppConfig]
     
     @State var currentClustering: String = "All"
     @State var clusterings: [String] = []
@@ -22,7 +23,9 @@ struct Home: View {
     
     @ViewBuilder
     var body: some View {
+        
         ZStack{
+            
             VStack(spacing: 0){
                 
                 VStack(alignment: .leading){
@@ -31,11 +34,11 @@ struct Home: View {
                         VStack(alignment: .leading){
                             if(friends.count == 0) {
                                 
-                                Text("Add Some")
+                                Text("Shh...looks like")
                                     .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
-                                    
                                 
-                                Text("Friends!")
+                                
+                                Text("it's quiet here.")
                                     .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
                                 
                             }else{
@@ -46,17 +49,21 @@ struct Home: View {
                                     Text("\(friends.filter{$0.firstChar == currentClustering}.count) of \(friends.count)")
                                         .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
                                 }
- 
+                                
                                 Text("Friends ❤️")
                                     .font(.custom("JacquesFrancoisShadow-Regular", size: 32))
+                                
                                 
                             }
                         }
                         .padding(.leading, 16)
-                        .padding(.top, safeArea.top + 4)
                         
                         Spacer()
                         
+                        MenuButtonView().padding(.trailing,20).onTapGesture {
+                            router.navigateTo(.Menu)
+                            
+                        }
                     }
                     
                     Spacer()
@@ -83,7 +90,6 @@ struct Home: View {
                                         }
                                         .onTapGesture {
                                             currentClustering = clustering
-                                            
                                         }
                                 }
                             }
@@ -94,34 +100,41 @@ struct Home: View {
                     
                 }
                 .padding(.bottom, 16)
-                .frame(height: UIScreen.height * 0.24)
-                .background(Image(.bgCloth1).resizable().scaledToFill().ignoresSafeArea())
+                .frame(minHeight: 130, idealHeight: UIScreen.height * 0.15, maxHeight: UIScreen.height * 0.15)
+                .background(Image(.bgCloth1).resizable().frame(height: UIScreen.height * 0.3).ignoresSafeArea())
                 
                 
                 HomeListView(clustering: currentClustering)
                     .padding(.horizontal, 16)
                     .padding(.bottom, 40)
                     .background(.bgPrimary)
-                    .frame(height: UIScreen.height * 0.82)
                     .ignoresSafeArea()
-                    .shadow(radius:4, x: 5, y: 5)
+                    .if(friends.count != 0){
+                        $0.shadow(radius:4, x: 5, y: 5)
+                    }
+                
             }
             
             DrawerView(addFriend: addFriend(friend:))
+            
         }
+        .toolbar(.hidden)
         .onAppear{
+            maybeNavToOnboarding()
             updateClusterings()
+            print(router.path.count)
         }
         .onChange(of: friends.count){
             updateClusterings()
         }
+        
     }
     
     func addFriend(friend: Friend){
         Task{
             modelContext.insert(friend)
         }
-
+        
     }
     
     func deleteFriend(friend: Friend){
@@ -135,7 +148,7 @@ struct Home: View {
                 modelContext.delete(note)
             }
         }
-
+        
     }
     
     func updateClusterings(){
@@ -151,8 +164,14 @@ struct Home: View {
         self.clusterings = ["All"] + tempClusterings.sorted()
     }
     
+    private func maybeNavToOnboarding() {
+        if let config = appConfig.first, !config.welcomed{
+            router.navigateTo(.Onboarding)
+        }
+    }
+    
 }
 
 #Preview {
-    ContentView().modelContainer(for: [Friend.self, Note.self], inMemory: true)
+    Home().modelContainer(for: [Friend.self, Note.self, AppConfig.self], inMemory: true).environment(Router()).environment(Modal(modalContent: AnyView(Text(""))))
 }
